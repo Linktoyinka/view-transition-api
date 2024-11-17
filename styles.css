@@ -97,6 +97,28 @@ body {
   }
 }
 
+@keyframes zoom-out {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 ::view-transition-old(root) {
   animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
@@ -107,7 +129,10 @@ body {
     300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
-::view-transition-old(banner-img),
+::view-transition-old(banner-img) {
+  animation: zoom-out 300ms ease-in-out;
+}
+
 ::view-transition-new(banner-img) {
-  animation: none;
+  animation: zoom-in 300ms ease-in-out;
 }
