@@ -1,0 +1,105 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #218838;
+}
+
+/* Movie Container */
+.movie-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.movie-card {
+  width: 200px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+.movie-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.movie-title {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.movie-description {
+  font-size: 14px;
+  color: #555;
+  padding: 0 10px 10px 10px;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Adding new movie transition via View Transition API */
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+::view-transition-new(movie-card) {
+  animation: slide-in-from-right 600ms ease-out;
+}
+
+/* Deleting movie transition via View Transition API */
+@keyframes slide-out-to-right {
+  to {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+}
+
+::view-transition-old(movie-card) {
+  animation: slide-out-to-right 600ms ease-in-out;
+}
